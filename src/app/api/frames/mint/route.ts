@@ -35,7 +35,6 @@ async function getResponse(req: NextRequest) {
           target: "eip155:7777777:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3:1",
         },
       ] as FrameButtonsType,
-      imageAspectRatio: "1:1",
       ogImage: NFT_IMAGE_URL,
       postUrl:
         "https://zora.co/collect/zora:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3/1",
@@ -51,7 +50,6 @@ async function getResponse(req: NextRequest) {
         },
       ] as FrameButtonsType,
       ogImage: NFT_IMAGE_URL,
-      imageAspectRatio: "1:1",
       postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/success`,
     };
   }
