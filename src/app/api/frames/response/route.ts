@@ -46,7 +46,10 @@ async function getResponse(req: NextRequest) {
     case 2:
     default:
       // Redirect to `https://explorer.airstack.xyz/token-balances?address=fc_fname%3Ayosephks.eth%2Cfc_fid%3A${fid}&rawInput=%23%E2%8E%B1fc_fname%3Ayosephks.eth%E2%8E%B1%28fc_fname%3Ayosephks.eth++ethereum+null%29++%23%E2%8E%B1fc_fid%3A${fid}%E2%8E%B1%28fc_fid%3A${fid}++ethereum+null%29&inputType=ADDRESS&activeSnapshotInfo=`
-      return NextResponse.redirect("");
+      return NextResponse.redirect(
+        `https://explorer.airstack.xyz/token-balances?address=fc_fname%3Ayosephks.eth%2Cfc_fid%3A${fid}&rawInput=%23%E2%8E%B1fc_fname%3Ayosephks.eth%E2%8E%B1%28fc_fname%3Ayosephks.eth++ethereum+null%29++%23%E2%8E%B1fc_fid%3A${fid}%E2%8E%B1%28fc_fid%3A${fid}++ethereum+null%29&inputType=ADDRESS&activeSnapshotInfo=`,
+        { status: 302 }
+      );
   }
 }
 
