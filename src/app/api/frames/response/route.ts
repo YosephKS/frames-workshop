@@ -8,16 +8,6 @@ import {
 import fetchOnchainScore from "@/app/lib/airstack/fetchOnchainScore";
 import { NextRequest, NextResponse } from "next/server";
 
-export interface PurpleDaoFriends {
-  profileName: string;
-  userId: string;
-  profileImageContentValue: {
-    image: {
-      medium: string;
-    };
-  };
-}
-
 async function getResponse(req: NextRequest) {
   let fid = 602; // Test FID – Only for development
   let buttonIndex = 1;

@@ -8,16 +8,6 @@ import {
 } from "frames.js";
 import { NextRequest } from "next/server";
 
-export interface PurpleDaoFriends {
-  profileName: string;
-  userId: string;
-  profileImageContentValue: {
-    image: {
-      medium: string;
-    };
-  };
-}
-
 async function getResponse(req: NextRequest) {
   let fid = 602; // Test FID – Only for development
   const score = Number(req.nextUrl.searchParams.get("score")) ?? 0;
@@ -61,6 +51,7 @@ async function getResponse(req: NextRequest) {
         },
       ] as FrameButtonsType,
       ogImage: NFT_IMAGE_URL,
+      imageAspectRatio: "1:1",
       postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/success`,
     };
   }
