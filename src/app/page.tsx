@@ -13,7 +13,7 @@ const initialFrame: Frame = {
     },
     {
       action: "post_redirect",
-      label: "",
+      label: "Redirect",
     },
     {
       action: "link",
