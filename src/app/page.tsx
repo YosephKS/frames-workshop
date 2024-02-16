@@ -1,9 +1,10 @@
 import { Frame, getFrameFlattened } from "frames.js";
 import type { Metadata } from "next";
+import { INITIAL_IMAGE } from "./constant";
 
 // Declare the frame
 const initialFrame: Frame = {
-  image: INTIAL_IMAGE,
+  image: INITIAL_IMAGE,
   version: "vNext",
   buttons: [
     {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: INTIAL_IMAGE,
+        url: INITIAL_IMAGE,
       },
     ],
   },
