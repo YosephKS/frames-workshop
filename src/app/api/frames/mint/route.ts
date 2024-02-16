@@ -62,7 +62,7 @@ async function getResponse(req: NextRequest) {
       ] as FrameButtonsType,
       imageAspectRatio: "1:1",
       ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
-      postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/success`,
+      postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/success`,
     };
   }
 
