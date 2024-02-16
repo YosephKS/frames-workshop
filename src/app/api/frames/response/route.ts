@@ -5,7 +5,6 @@ import {
   validateFrameMessage,
   FrameButtonsType,
 } from "frames.js";
-import fetchOnchainScore from "@/app/lib/airstack/fetchOnchainScore";
 import { NextRequest, NextResponse } from "next/server";
 
 async function getResponse(req: NextRequest) {
@@ -24,19 +23,15 @@ async function getResponse(req: NextRequest) {
 
   switch (buttonIndex) {
     case 1:
-      const score =
-        (await fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`)) ?? 0;
+      // use `fetchOnchainScore` to get the user's onchain score
+      const score = 0;
       const frame: Frame = {
         version: "vNext",
         image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
-        buttons: [
-          {
-            action: "post",
-            label: "Next",
-          },
-        ] as FrameButtonsType,
+        // Single Next button post
+        buttons: [] as FrameButtonsType,
         ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
-        postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/mint`,
+        postUrl: "", // to /api/frames/mint
       };
 
       // Return the frame as HTML
@@ -50,11 +45,8 @@ async function getResponse(req: NextRequest) {
       });
     case 2:
     default:
-      // Fetch data from Airstack of the user's Farcaster Details
-      return NextResponse.redirect(
-        `https://explorer.airstack.xyz/token-balances?address=fc_fname%3Ayosephks.eth%2Cfc_fid%3A${fid}&rawInput=%23%E2%8E%B1fc_fname%3Ayosephks.eth%E2%8E%B1%28fc_fname%3Ayosephks.eth++ethereum+null%29++%23%E2%8E%B1fc_fid%3A${fid}%E2%8E%B1%28fc_fid%3A${fid}++ethereum+null%29&inputType=ADDRESS&activeSnapshotInfo=`,
-        { status: 302 }
-      );
+      // Redirect to `https://explorer.airstack.xyz/token-balances?address=fc_fname%3Ayosephks.eth%2Cfc_fid%3A${fid}&rawInput=%23%E2%8E%B1fc_fname%3Ayosephks.eth%E2%8E%B1%28fc_fname%3Ayosephks.eth++ethereum+null%29++%23%E2%8E%B1fc_fid%3A${fid}%E2%8E%B1%28fc_fid%3A${fid}++ethereum+null%29&inputType=ADDRESS&activeSnapshotInfo=`
+      return NextResponse.redirect("");
   }
 }
 

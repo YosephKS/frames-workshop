@@ -6,22 +6,8 @@ import { INITIAL_IMAGE } from "./constant";
 const initialFrame: Frame = {
   image: INITIAL_IMAGE,
   version: "vNext",
-  buttons: [
-    {
-      action: "post",
-      label: "Check Eligibility",
-    },
-    {
-      action: "post_redirect",
-      label: "Go to Explorer",
-    },
-    {
-      action: "link",
-      label: "Powered By Airstack",
-      target: "https://airstack.xyz",
-    },
-  ],
-  postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/response`,
+  buttons: [],
+  postUrl: "", // to /api/frames/response
 };
 
 // Export Next.js metadata
