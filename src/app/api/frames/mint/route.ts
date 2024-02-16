@@ -23,7 +23,7 @@ async function getResponse(req: NextRequest) {
 
   let frame: Frame;
 
-  if (score < 50) {
+  if (score >= 50) {
     frame = {
       version: "vNext",
       image: NFT_IMAGE_URL,
