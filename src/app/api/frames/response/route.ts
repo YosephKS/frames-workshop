@@ -36,38 +36,18 @@ async function getResponse(req: NextRequest) {
     case 1:
       const score =
         (await fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`)) ?? 0;
-      let frame: Frame;
-
-      if (score < 50) {
-        // Use the frame message to build the frame
-        frame = {
-          version: "vNext",
-          image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/first?score=${score}`,
-          buttons: [
-            {
-              action: "mint",
-              label: "Mint",
-              target:
-                "eip155:7777777:0xe4ceeb0c8dd38c18692a76562343e089febc30ea:32",
-            },
-          ] as FrameButtonsType,
-          ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/first?score=${score}`,
-          postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frame`,
-        };
-      } else {
-        frame = {
-          version: "vNext",
-          image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/first?score=${score}`,
-          buttons: [
-            {
-              action: "post",
-              label: "Next",
-            },
-          ] as FrameButtonsType,
-          ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/first?score=${score}`,
-          postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames`,
-        };
-      }
+      const frame: Frame = {
+        version: "vNext",
+        image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
+        buttons: [
+          {
+            action: "post",
+            label: "Next",
+          },
+        ] as FrameButtonsType,
+        ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
+        postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/mint`,
+      };
 
       // Return the frame as HTML
       const html = getFrameHtml(frame);
