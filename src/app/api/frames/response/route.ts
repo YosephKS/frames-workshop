@@ -1,3 +1,4 @@
+import fetchOnchainScore from "@/app/lib/airstack/fetchOnchainScore";
 import {
   getFrameHtml,
   Frame,
@@ -24,14 +25,19 @@ async function getResponse(req: NextRequest) {
   switch (buttonIndex) {
     case 1:
       // use `fetchOnchainScore` to get the user's onchain score
-      const score = 0;
+      const score = fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`);
       const frame: Frame = {
         version: "vNext",
         image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
         // Single Next button post
-        buttons: [] as FrameButtonsType,
+        buttons: [
+          {
+            action: "post",
+            label: "Next",
+          },
+        ] as FrameButtonsType,
         ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,
-        postUrl: "", // to /api/frames/mint
+        postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/mint`, // to /api/frames/mint
       };
 
       // Return the frame as HTML
