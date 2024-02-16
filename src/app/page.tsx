@@ -21,7 +21,7 @@ const initialFrame: Frame = {
       target: "https://airstack.xyz",
     },
   ],
-  postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/frames`,
+  postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames`,
 };
 
 // Export Next.js metadata
