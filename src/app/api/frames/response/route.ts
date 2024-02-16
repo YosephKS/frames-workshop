@@ -25,7 +25,7 @@ async function getResponse(req: NextRequest) {
   switch (buttonIndex) {
     case 1:
       // use `fetchOnchainScore` to get the user's onchain score
-      const score = fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`);
+      const score = await fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`);
       const frame: Frame = {
         version: "vNext",
         image: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/generated?score=${score}`,

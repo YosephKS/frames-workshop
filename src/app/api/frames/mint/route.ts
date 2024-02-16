@@ -23,12 +23,18 @@ async function getResponse(req: NextRequest) {
 
   let frame: Frame;
 
-  if (score >= 50) {
+  if (score < 50) {
     frame = {
       version: "vNext",
       image: NFT_IMAGE_URL,
       // Use sample mint target `eip155:7777777:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3:1`
-      buttons: [] as FrameButtonsType,
+      buttons: [
+        {
+          action: "mint",
+          label: "Mint",
+          target: "eip155:7777777:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3:1",
+        },
+      ] as FrameButtonsType,
       ogImage: NFT_IMAGE_URL,
       postUrl:
         "https://zora.co/collect/zora:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3/1",
@@ -38,9 +44,14 @@ async function getResponse(req: NextRequest) {
       version: "vNext",
       image: NFT_IMAGE_URL,
       // Mint for free POST
-      buttons: [] as FrameButtonsType,
+      buttons: [
+        {
+          action: "post",
+          label: "Mint for Free",
+        },
+      ] as FrameButtonsType,
       ogImage: NFT_IMAGE_URL,
-      postUrl: "", // to /api/frames/success
+      postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/success`, // to /api/frames/success
     };
   }
 
