@@ -9,11 +9,11 @@ const initialFrame: Frame = {
   buttons: [
     {
       action: "post",
-      label: "Random image",
+      label: "Check Eligibility",
     },
     {
       action: "post_redirect",
-      label: "Redirect",
+      label: "Go to Explorer",
     },
     {
       action: "link",
