@@ -1,3 +1,4 @@
+import { SUCCESS_CLAIM_IMAGE_URL } from "@/app/constant";
 import {
   getFrameHtml,
   Frame,
@@ -15,10 +16,12 @@ async function getResponse(req: NextRequest) {
     }
   }
 
+  // This is where gasless minting logic would go
+
   const frame: Frame = {
     version: "vNext",
-    image: `https://gateway.ipfs.io/ipfs/Qme9BVhNPfsaKKhPy7k1QWoMnmqrFZMjibXEKjmNEa8ADH/Slice%202.png`,
-    ogImage: `https://gateway.ipfs.io/ipfs/Qme9BVhNPfsaKKhPy7k1QWoMnmqrFZMjibXEKjmNEa8ADH/Slice%202.png`,
+    image: SUCCESS_CLAIM_IMAGE_URL,
+    ogImage: SUCCESS_CLAIM_IMAGE_URL,
     postUrl: "",
   };
 

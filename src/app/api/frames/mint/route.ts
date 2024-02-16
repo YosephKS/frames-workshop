@@ -1,3 +1,4 @@
+import { NFT_IMAGE_URL } from "@/app/constant";
 import {
   getFrameHtml,
   Frame,
@@ -36,31 +37,30 @@ async function getResponse(req: NextRequest) {
     // Use the frame message to build the frame
     frame = {
       version: "vNext",
-      image: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
+      image: NFT_IMAGE_URL,
       buttons: [
         {
           action: "mint",
           label: "Mint",
-          target:
-            "eip155:7777777:0xe4ceeb0c8dd38c18692a76562343e089febc30ea:32",
+          target: "eip155:7777777:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3:1",
         },
       ] as FrameButtonsType,
       imageAspectRatio: "1:1",
-      ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
+      ogImage: NFT_IMAGE_URL,
       postUrl:
         "https://zora.co/collect/zora:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3/1",
     };
   } else {
     frame = {
       version: "vNext",
-      image: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
+      image: NFT_IMAGE_URL,
       buttons: [
         {
           action: "post",
           label: "Mint for Free",
         },
       ] as FrameButtonsType,
-      ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
+      ogImage: NFT_IMAGE_URL,
       postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames/success`,
     };
   }
