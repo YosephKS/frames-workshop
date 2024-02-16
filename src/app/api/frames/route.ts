@@ -38,7 +38,7 @@ async function getResponse(req: NextRequest) {
         (await fetchOnchainScore("yosephks.eth", `fc_fid:${fid}`)) ?? 0;
       let frame: Frame;
 
-      if (score >= 50) {
+      if (score < 50) {
         // Use the frame message to build the frame
         frame = {
           version: "vNext",
@@ -65,7 +65,7 @@ async function getResponse(req: NextRequest) {
             },
           ] as FrameButtonsType,
           ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/image/first?score=${score}`,
-          postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/purple-dao/main`,
+          postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames`,
         };
       }
 
@@ -81,7 +81,10 @@ async function getResponse(req: NextRequest) {
     case 2:
     default:
       // Fetch data from Airstack of the user's Farcaster Details
-      return NextResponse.redirect(`https://airstack.xyz`, { status: 302 });
+      return NextResponse.redirect(
+        `https://explorer.airstack.xyz/token-balances?address=fc_fname%3Ayosephks.eth%2Cfc_fid%3A${fid}&rawInput=%23%E2%8E%B1fc_fname%3Ayosephks.eth%E2%8E%B1%28fc_fname%3Ayosephks.eth++ethereum+null%29++%23%E2%8E%B1fc_fid%3A${fid}%E2%8E%B1%28fc_fid%3A${fid}++ethereum+null%29&inputType=ADDRESS&activeSnapshotInfo=`,
+        { status: 302 }
+      );
   }
 }
 
