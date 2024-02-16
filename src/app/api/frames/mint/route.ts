@@ -32,7 +32,7 @@ async function getResponse(req: NextRequest) {
 
   let frame: Frame;
 
-  if (score < 50) {
+  if (score >= 50) {
     // Use the frame message to build the frame
     frame = {
       version: "vNext",
@@ -45,6 +45,7 @@ async function getResponse(req: NextRequest) {
             "eip155:7777777:0xe4ceeb0c8dd38c18692a76562343e089febc30ea:32",
         },
       ] as FrameButtonsType,
+      imageAspectRatio: "1:1",
       ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
       postUrl:
         "https://zora.co/collect/zora:0xa15Bb830aCD9Ab46164e6840E3ef2dBBF9c5E2B3/1",
@@ -59,8 +60,9 @@ async function getResponse(req: NextRequest) {
           label: "Mint for Free",
         },
       ] as FrameButtonsType,
+      imageAspectRatio: "1:1",
       ogImage: `${process.env.NEXT_PUBLIC_HOSTNAME}/zora.gif`,
-      postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/frames`,
+      postUrl: `${process.env.NEXT_PUBLIC_HOSTNAME}/api/success`,
     };
   }
 
